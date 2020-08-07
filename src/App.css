@@ -1,0 +1,177 @@
+html {
+  font-size: 18px;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  background: #ccc;
+  background: black;
+  color: white;
+}
+
+h1, h2 {
+  text-shadow: 4px 4px 4px black;
+  font-family: 'Kaushan Script', cursive;
+  color: rgb(237, 179, 31);
+}
+
+/*===============Header and Playlist (for background)============*/
+.bg-wrapper {
+  background-image: url('./Assets/KennyG.jpg');
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/*================Header================*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0px 10%;
+  color: white;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 97%);
+
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 10px 0px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+/*================Playlist================*/
+
+.playlist-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 40vh;
+  color: white;
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 19%, rgba(0,0,0,1) 100%);
+}
+
+.song-row {
+  margin: 3px auto;
+  /* background: rgba(0,0,0,0.2); */
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 2px 5px;
+  width: 80%;
+  text-shadow: 3px 2px 3px black;
+}
+
+.song-title, .song-artist, .song-duration, .song-fave {
+  display: flex;
+  align-items: center;
+}
+
+.song-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.song-title, .song-artist {
+  justify-content: flex-start;
+}
+
+.song-duration, .song-fave {
+  justify-content: flex-end;
+}
+
+.song-artist, .song-fave {
+
+}
+
+.song-artist {
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.song-fave button {
+  border: none;
+  outline: none;
+  background: rgba(0,0,0,0);
+  color: white;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.song-fave button:hover {
+  border: none;
+  cursor: pointer;
+}
+
+/*---make the font-awesome component 
+not interfere with clicks---*/
+
+.song-fave svg {
+  pointer-events: none;
+  color: white;
+}
+/*================Favorites================*/
+
+.favorites-wrapper {
+  height: 25vh;
+  overflow: auto;
+  padding: 0 10%;
+}
+
+.favorites-wrapper ul {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+/*================Add New Song Form================*/
+
+.add-song-wrapper {
+  height: 25vh;
+  border: 1px solid black;
+  padding: 0 10%;
+}
+
+.add-song-wrapper h2 {
+  margin: 0;
+}
+
+form {
+  margin: 0 auto;
+  width: 300px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  
+}
+
+input {
+  display: block;
+  width: 100%;
+  font-family: 'Oswald', sans-serif;
+}
+
+#submit {
+  margin: 8px 3px;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+}
