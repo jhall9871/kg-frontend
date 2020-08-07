@@ -5,41 +5,31 @@ import Favorites from "./Components/Favorites";
 import AddSong from "./Components/AddSong";
 import axios from "axios";
 import apiUrl from './apiConfig'
-
 import "./App.css";
 
 function App() {
   const [playlist, setPlaylist] = useState([]);
-  const [title, setTitle] = useState("");
-  const [artist, setArtist] = useState("");
-  const [duration, setDuration] = useState("");
+  const [newSong, setNewSong] = useState({})
 
   // =========Handle the form to create new tracks===========//
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
+  const handleInputChange = (e) => {
+    setNewSong({
+      ...newSong,
+      [e.target.name]: e.target.value,
+    });
   };
-  const handleArtistChange = (event) => {
-    setArtist(event.target.value);
-  };
-  const handleDurationChange = (event) => {
-    setDuration(event.target.value);
-  };
-  const handleAddSong = (event) => {
+  
+  const handleAddSong = async (event) => {
     event.preventDefault();
     const makeAddAPICall = async () => {
       try {
-        await axios.post(`${apiUrl}/songs`, {
-          title: title,
-          artist: artist,
-          duration: duration,
-          isfave: false,
-        });
+        await axios.post(`${apiUrl}/songs`, newSong);
       } catch (err) {
         console.error(err);
       }
     };
-    makeAddAPICall();
-    refreshPage();
+    await makeAddAPICall();
+    makePlaylistAPICall();
   };
 
   //==========Set playlist==============//
@@ -51,9 +41,7 @@ function App() {
       console.error(err);
     }
   };
-  const refreshPage = () => {
-    window.location.reload(false);
-  };
+
   useEffect(() => {
     makePlaylistAPICall();
   }, []);
@@ -100,9 +88,7 @@ function App() {
       <Favorites playlist={playlist} />
       <AddSong
         handleAddSong={handleAddSong}
-        handleTitleChange={handleTitleChange}
-        handleArtistChange={handleArtistChange}
-        handleDurationChange={handleDurationChange}
+        handleInputChange={handleInputChange}
       />
     </div>
   );

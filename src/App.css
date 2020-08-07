@@ -135,6 +135,7 @@ not interfere with clicks---*/
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-bottom: 0;
 }
 
 
@@ -168,10 +169,18 @@ input {
 }
 
 #submit {
-  margin: 8px 3px;
+  margin: 20px 3px;
   background: #fff;
   border-radius: 10px;
   font-size: 1rem;
   outline: none;
   border: none;
+}
+
+#submit:hover {
+  cursor: pointer;
+}
+
+#submit:active {
+  background: rgb(237, 179, 31);
 }
