@@ -4,6 +4,7 @@ import Playlist from "./Components/Playlist";
 import Favorites from "./Components/Favorites";
 import AddSong from "./Components/AddSong";
 import axios from "axios";
+import apiUrl from './apiConfig'
 
 import "./App.css";
 
@@ -27,7 +28,7 @@ function App() {
     event.preventDefault();
     const makeAddAPICall = async () => {
       try {
-        await axios.post(`http://localhost:3000/songs`, {
+        await axios.post(`${apiUrl}/songs`, {
           title: title,
           artist: artist,
           duration: duration,
@@ -44,7 +45,7 @@ function App() {
   //==========Set playlist==============//
   const makePlaylistAPICall = async () => {
     try {
-      const res = await axios(`http://localhost:3000/songs`);
+      const res = await axios(`${apiUrl}/songs`);
       setPlaylist(res.data);
     } catch (err) {
       console.error(err);
@@ -65,7 +66,7 @@ function App() {
       let song = playlist.find((obj) => obj.id === songId);
       let favValue = !song.isfave;
       try {
-        await axios.put(`http://localhost:3000/songs/${songId}`, {
+        await axios.put(`${apiUrl}/songs/${songId}`, {
           isfave: favValue,
         });
       } catch (err) {
@@ -81,7 +82,7 @@ function App() {
     let songId = event.target.value;
    const makeDeleteApiCall = async () => {
       try {
-        await axios.delete(`http://localhost:3000/songs/${songId}`);
+        await axios.delete(`${apiUrl}/songs/${songId}`);
       } catch (err) {
         console.error(err);
       }
